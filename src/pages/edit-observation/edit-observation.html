@@ -1,0 +1,99 @@
+<!--
+  Generated template for the NewObservation page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title><span [class]="'emo emo-' + topic?.icon"
+                     style="vertical-align: top"
+                     [style.color]="topic?.color"></span>
+      &nbsp;{{topic?.name}}
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row width-100 *ngIf="topic?.type==='range'||topic?.type==='numeric'">
+      <div class="text-center valueInputWrapper">
+        <button [hidden]="valueInputIsFocused" id="valueInputButton" ion-button clear (click)="valueInputIsFocused=true"
+                onclick="setTimeout(document.getElementById('valueInput').click(), 100);">{{value}}</button>
+        <input [hidden]="!valueInputIsFocused" autofocus id="valueInput"
+               (blur)="valueInputIsFocused=false;" [(ngModel)]="value"
+               type="number" onclick="this.select();">
+      </div>
+    </ion-row>
+    <ion-row *ngIf="topic?.type==='range'">
+      <ion-range style="width: 85%; margin: 0 auto;" [min]="topic.rangeStart" [max]="topic.rangeEnd"
+                 step="1" snaps="true"
+                 [(ngModel)]="value" color="secondary">
+        <ion-label range-left>{{topic.rangeStart}}</ion-label>
+        <ion-label range-right>{{topic.rangeEnd}}</ion-label>
+      </ion-range>
+    </ion-row>
+
+    <ion-row width-100>
+      <ion-col width-100>
+        <ion-item>
+          <ion-label>Comment</ion-label>
+          <ion-textarea [(ngModel)]="observationComment" rows="3"></ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="date">
+      <ion-col width-100>
+        <ion-item>
+          <ion-label>Observation Time</ion-label>
+          <button item-right ion-button clear class="oTime" (click)="setTime()">{{observationTime()}}</button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-100>
+        <ion-item *ngIf="!date">
+          <ion-label>Observation time</ion-label>
+          <button item-right ion-button outline icon-left (click)="setTime()">
+            set observation time&nbsp;
+          </button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-100>
+        <ion-item>
+          <ion-label>Timezone</ion-label>
+          <button item-right ion-button clear class="oTime" (click)="setTimezone()">{{observationTimezone()}}</button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col width-100>
+        <ion-list>
+          <ion-item>
+            <ion-label>Location</ion-label>
+            <button item-right id="locationButton" ion-button clear
+                    (click)="locate()"
+                    icon-right *ngIf="coordinates">
+              {{coordinates?.lat | number : '1.2-4'}}, {{coordinates?.lng | number : '1.2-4'}}
+              <ion-icon name="locate"></ion-icon>
+            </button>
+          </ion-item>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list padding>
+    <button id="saveButton" ion-button block (click)="save()">Save</button>
+    <button id="deleteButton" *ngIf="originalObservation" ion-button block color="danger" (click)="delete()">Delete</button>
+    <button id="dismissButton" ion-button block color="light" (click)="dismiss()">Dismiss</button>
+  </ion-list>
+
+</ion-content>

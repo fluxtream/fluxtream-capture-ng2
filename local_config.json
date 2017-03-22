@@ -1,0 +1,26 @@
+{
+	"general": {
+		"live": {
+			"node_path": "/usr/local/bin/node"
+		}
+	},
+	"ios": {
+		"profiles": {
+			"DEFAULT": {}
+		},
+		"devicetypeid": "com.apple.CoreSimulator.SimDeviceType.iPhone-6"
+	},
+	"android": {
+		"profiles": {
+			"DEFAULT": {}
+		},
+		"sdk": "/usr/local/Cellar/android-sdk/24.4.1_1/",
+		"device": "ZY223JG7FV"
+	},
+	"web": {
+		"profiles": {
+			"DEFAULT": {}
+		},
+		"node_path": "/usr/local/bin/node"
+	}
+}

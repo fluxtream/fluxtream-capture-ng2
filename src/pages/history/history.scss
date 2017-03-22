@@ -1,0 +1,95 @@
+page-history {
+
+  .chart-wrapper {
+    margin-top: 64px;
+    width: 100% !important;
+    height: 85% !important;
+    display: block;
+  }
+
+  ion-list {
+    margin-bottom: 60px;
+  }
+
+  .highcharts-background {
+    fill: $background-warm;
+  }
+
+  #historyItems {
+    .item-inner {
+      background: transparent;
+    }
+  }
+
+  .historyItem {
+    background-color: $background-warm;
+  }
+
+  .wrapper {
+    position: absolute;
+    top: 20%;
+    z-index: 1;
+  }
+
+  .date-browser {
+    background-color: $background-warm;
+  }
+
+  .content-ios #historyItems {
+    margin-top: 74px;
+  }
+
+  .content-md #historyItems {
+    margin-top: 64px;
+  }
+
+  .chart {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+  }
+
+  .observationValue {
+    text-align: center;
+    font-weight: 300;
+  }
+
+  .observationTime {
+    font-size: 80%;
+  }
+
+  .observationTime {
+    text-align: right;
+  }
+
+  .row-wrapper {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .row-wrapper div {
+    display: table-cell;
+  }
+
+  .selectedTimeUnit {
+    background-color: #ccc;
+  }
+
+  .selectedTimeUnit.currentRange {
+    background-color: #979797;
+  }
+
+  .item-divider {
+    background-color: #f0f0f0;
+  }
+
+  ion-item-divider.weekend {
+    background-color: #f9e8ef;
+  }
+
+  ion-item.weekend {
+    background-color: #fff3fc;
+  }
+
+}

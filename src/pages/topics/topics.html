@@ -1,0 +1,82 @@
+<!--
+  Generated template for the Topics page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons left>
+      <button id="showMenuButton" ion-button clear (click)="toggleMenu()" icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title [ngSwitch]="syncStatus">
+      <ion-icon *ngSwitchCase="SyncStatus.STATUS_IDLE" name="home"></ion-icon>
+      <ion-icon *ngSwitchCase="SyncStatus.STATUS_ERROR" name="alert"></ion-icon>
+      <ion-spinner *ngSwitchCase="SyncStatus.STATUS_ACTIVE" color="light"></ion-spinner>
+    </ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="topics?.length<2" class="wrapper">
+    <div *ngIf="topics?.length==1">Tap topic to make a new observation</div>
+    <div *ngIf="topics?.length>0">Create a topic and start making observations</div>
+  </div>
+
+  <ion-list [reorder]="reordering" (ionItemReorder)="reOrder($event)">
+
+    <ion-item-sliding #slidingItem *ngFor="let topic of topics">
+
+      <ion-item (click)="newObservation(topic)">
+        <div class="row-wrapper">
+          <div>
+            <span [class]="'emo emo-' + topic.icon" [style.color]="topic.color" style="float:left"></span>
+            &nbsp;&nbsp;{{topic.name}}
+          </div>
+          <div class="add-observation">
+            <ion-icon name="add"></ion-icon>&nbsp;
+          </div>
+          <div class="topic-grip">
+            <span class="grip">&nbsp;&nbsp;</span>
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item-options>
+        <button ion-button icon-only color="light" (click)="updateTopic(topic, slidingItem)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button icon-only color="danger" (click)="deleteTopic(topic, slidingItem)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+  <ion-fab right bottom #fab>
+    <button ion-fab color="primary">
+      <img src="assets/img/icons/icon_white.png">
+    </button>
+    <ion-fab-list side="left">
+      <button ion-fab (click)="addTopic(fab)"><ion-icon name="add"></ion-icon></button>
+      <button ion-fab (click)="toggleReordering(fab)"><ion-icon name="menu"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+  <ion-fab *ngIf="historyMode=='log'" left bottom>
+    <button ion-fab color="primary" (click)="history()">
+      <ion-icon name="paper"></ion-icon></button>
+  </ion-fab>
+  <ion-fab *ngIf="historyMode=='chart'" left bottom>
+    <button ion-fab color="primary" (click)="history()">
+      <ion-icon name="pulse"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

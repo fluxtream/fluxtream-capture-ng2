@@ -1,0 +1,68 @@
+
+<ion-menu side="right" type="push" swipeEnabled="false" id="topicsFilter" persistent="false" [content]="content">
+  <ion-content class="dark">
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label>
+          <div class="wrapper" style="padding: 20px 0 0 0">
+            <h1 class="text-center">
+              <ion-icon name="ios-funnel"></ion-icon>&nbsp;&nbsp;Filter Topics
+            </h1>
+          </div>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>All</ion-label>
+        <ion-checkbox *ngIf="selectionState=='allSelected'"
+                      mode="ios"
+                      checked="true"
+                      item-right (ionChange)="allTopicsChecked(false)"></ion-checkbox>
+        <ion-checkbox *ngIf="selectionState=='someSelected'"
+                      mode="ios"
+                      class="someSelected"
+                      checked="false"
+                      item-right (ionChange)="allTopicsChecked(true)"></ion-checkbox>
+        <ion-checkbox *ngIf="selectionState=='noneSelected'"
+                      mode="ios"
+                      checked="false"
+                      item-right (ionChange)="allTopicsChecked(true)"></ion-checkbox>
+      </ion-item>
+      <ion-item *ngFor="let topic of topics">
+        <ion-label>
+          <span [class]="'emo emo-' + topic.icon" [style.color]="topic.color"></span>&nbsp;&nbsp;{{topic.name}}
+        </ion-label>
+        <ion-checkbox mode="ios" item-right (click)="topicsFilterEdited()" [(ngModel)]="checkedTopics[topic._id]"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+<ion-menu side="left" type="push" [swipeEnabled]="false" #mainMenu id="main" persistent="true" [content]="content">
+  <ion-content class="menu-content">
+    <ion-list class="menu-list">
+      <!--<ion-item style="height:118px">-->
+        <!--<user-profile></user-profile>-->
+      <!--</ion-item>-->
+      <button detail-none *ngIf="fullname" id="profile-button" ion-item>
+        {{fullname}}
+        <ion-icon name="person" item-left></ion-icon>
+      </button>
+      <!--<button detail-none id="settings-button" ion-item (click)="openPage('settings')">-->
+        <!--Settings-->
+        <!--<ion-icon name="settings" item-left></ion-icon>-->
+      <!--</button>-->
+      <button detail-none id="debug-button" ion-item (click)="openPage('debug')">
+        Debug
+        <ion-icon name="bug" item-left></ion-icon>
+      </button>
+      <button detail-none id="logout-button" ion-item (click)="signOut();mainMenu.close()">
+        Sign Out
+        <ion-icon name="log-out" item-left></ion-icon>
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+<ion-nav #content swipe-back-enabled="false" [root]="rootPage"></ion-nav>

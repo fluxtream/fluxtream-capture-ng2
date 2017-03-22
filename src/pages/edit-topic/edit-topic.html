@@ -1,0 +1,91 @@
+<!--
+  Generated template for the NewTopic page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title *ngIf="originalTopic">Edit Topic</ion-title>
+    <ion-title *ngIf="!originalTopic">Create a new Topic</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss(false)">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Topic Name</ion-label>
+      <ion-input #tName="ngModel" (blur)="validate(true)" [(ngModel)]="topicName" required type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Entry Type</ion-label>
+      <ion-select #tType required [(ngModel)]="topicType" (ionChange)="switchTopicType($event)">
+        <ion-option value="none">Comment Only</ion-option>
+        <ion-option value="numeric">Numeric</ion-option>
+        <ion-option value="range">Range</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item (click)="setIcon()">
+      <ion-label style="color:#999">Icon</ion-label>
+      <span ion-text item-right [class]="'emo emo-'+icon"></span>
+    </ion-item>
+
+    <ion-item>
+      <ion-label style="color:#999">Color</ion-label>
+      <span ion-text item-right>
+        <input #colorInput type="color" [value]="color" (change)="color=$event.target.value">
+      </span>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list>
+
+    <ion-item-divider *ngIf="topicType==='range'">Range Options:</ion-item-divider>
+
+    <ion-item *ngIf="topicType==='range'">
+      <ion-label>Range Start</ion-label>
+      <ion-input required (blur)="validate(true)" [(ngModel)]="rangeStart" (ngModelChange)="toNumber()" type="number"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="topicType==='range'">
+      <ion-label>Range End</ion-label>
+      <ion-input required (blur)="validate(true)" [(ngModel)]="rangeEnd" (ngModelChange)="toNumber()" type="number"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="topicType==='range'">
+      <ion-label>Default</ion-label>
+      <ion-input (blur)="validate(true)" [(ngModel)]="rangeDefault" (ngModelChange)="toNumber()" type="number"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list>
+
+    <ion-card *ngIf="errors&&errors.length>0">
+      <ion-card-content>
+        <p ion-text color="danger" *ngFor="let error of errors">
+          <ion-icon name="warning"></ion-icon> {{error}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+
+  <ion-list>
+    <button id="saveButton" [disabled]="!isValid" ion-button block (click)="save()">Save</button>
+    <button id="deleteButton" *ngIf="originalTopic" ion-button color="danger" block (click)="delete()">Delete</button>
+    <button id="dismissButton" ion-button color="light" block (click)="dismiss(false)">Dismiss</button>
+  </ion-list>
+
+</ion-content>

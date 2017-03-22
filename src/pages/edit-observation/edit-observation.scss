@@ -1,0 +1,47 @@
+page-edit-observation {
+
+  .scroll-content {
+    position: relative;
+    height: 100%;
+  }
+
+  //#saveButton {
+  //  position: absolute;
+  //  bottom: 45px;
+  //}
+  //
+
+  #valueInput {
+    margin-top: 4px;
+    padding-left: 2px;
+    border: 0;
+    width: 7em;
+    text-align: center;
+    font-size: 125%;
+  }
+
+  #valueInputButton {
+    border: 0;
+    width: 7em;
+    text-align: center;
+    font-size: 125%;
+  }
+
+  .valueInputWrapper {
+    margin: 10px auto 0;
+    height: 3em;
+    font-size: 25px;
+  }
+
+  #locationButton {
+    float: right;
+  }
+
+  .oTime > input {
+    text-align: right;
+  }
+
+  h1.text-center {
+    font-size: 30px;
+  }
+}

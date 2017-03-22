@@ -1,0 +1,40 @@
+<!--
+  Generated template for the TimeWidget page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Set Observation Time</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss(false)">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="wrapper">
+    <ion-item>
+      <ion-label>Time</ion-label>
+      <ion-datetime displayFormat="h:mm a" [(ngModel)]="time"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="DDDD MMM D, YYYY" [(ngModel)]="date"></ion-datetime>
+    </ion-item>
+    <button ion-button block (click)="dismiss(true)">
+      Done
+    </button>
+    <button id="dismissButton" ion-button color="light" block (click)="dismiss(false)">
+      Dismiss
+    </button>
+  </div>
+
+</ion-content>

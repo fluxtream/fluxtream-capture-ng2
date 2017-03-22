@@ -1,0 +1,47 @@
+<!--
+  Generated template for the IconChooser page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Set Icon</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button *ngFor="let iconName of emotionsIcons"
+          (click)="setIcon(iconName)"
+          class="iconButton" ion-button clear>
+    <span [class]="'emo emo-'+iconName"></span>
+  </button>
+  <button *ngFor="let iconName of foodIcons"
+          (click)="setIcon(iconName)"
+          class="iconButton" ion-button clear>
+    <span [class]="'emo emo-'+iconName"></span>
+  </button>
+  <button *ngFor="let iconName of activitiesIcons"
+          (click)="setIcon(iconName)"
+          class="iconButton" ion-button clear>
+    <span [class]="'emo emo-'+iconName"></span>
+  </button>
+  <button *ngFor="let iconName of eventsIcons"
+          (click)="setIcon(iconName)"
+          class="iconButton" ion-button clear>
+    <span [class]="'emo emo-'+iconName"></span>
+  </button>
+  <button *ngFor="let iconName of abstractIcons"
+          (click)="setIcon(iconName)"
+          class="iconButton" ion-button clear>
+    <span [class]="'emo emo-'+iconName"></span>
+  </button>
+</ion-content>

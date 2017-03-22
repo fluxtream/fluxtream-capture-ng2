@@ -1,0 +1,39 @@
+<!--
+  Generated template for the SignIn page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header class="login-header auth-header">
+  <ion-navbar>
+    <ion-title>Sign in</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content auth-content">
+  {{errorMessage}}
+  <form class="login-form auth-form" [formGroup]="login" (ngSubmit)="signIn()">
+    <ion-item>
+      <ion-input type="text" (focus)="errorMessage=null" placeholder="Username" formControlName="username"></ion-input>
+    </ion-item>
+    <show-hide-container>
+      <ion-item>
+        <ion-input type="password" (focus)="errorMessage=null" placeholder="Password" formControlName="password" show-hide-input></ion-input>
+      </ion-item>
+    </show-hide-container>
+    <ion-card *ngIf="errorMessage" color="danger">
+      <ion-card-content><ion-icon name="warning"></ion-icon>{{errorMessage}}</ion-card-content>
+    </ion-card>
+    <button ion-button block class="auth-action-button login-button" type="submit" [disabled]="!login.valid">Log in</button>
+  </form>
+  <ion-row class="alt-options">
+    <ion-col no-padding width-50>
+      <button ion-button block clear class="forgot-button" (click)="goToForgotPassword()">Forgot Password?</button>
+    </ion-col>
+    <ion-col no-padding width-50>
+      <button ion-button block clear class="signup-button" (click)="goToSignup()">Sign up!</button>
+    </ion-col>
+  </ion-row>
+</ion-content>
+

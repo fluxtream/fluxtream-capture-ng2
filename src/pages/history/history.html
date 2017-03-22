@@ -1,0 +1,112 @@
+<!--
+  Generated template for the History page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+
+  <ion-navbar color="primary" hideBackButton="true">
+
+    <ion-title [ngSwitch]="syncStatus">
+      <ion-icon *ngSwitchCase="SyncStatus.STATUS_IDLE" name="paper"></ion-icon>
+      <span *ngSwitchCase="SyncStatus.STATUS_IDLE">
+        &nbsp;&nbsp;
+        <span [innerHTML]="timeRangeLabel"></span>
+      </span>
+      <ion-icon *ngSwitchCase="SyncStatus.STATUS_ERROR" name="alert"></ion-icon>
+      <ion-spinner *ngSwitchCase="SyncStatus.STATUS_ACTIVE" color="light"></ion-spinner>
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="toggleTopicsFilter()">
+        <ion-icon name="ios-funnel"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="date-browser" ion-fixed>
+    <ion-row id="navButtons">
+      <ion-col width-20>
+        <button ion-button block clear icon-only (tap)="prev()"><ion-icon name="arrow-dropleft"></ion-icon></button>
+      </ion-col>
+      <ion-col width-20>
+        <button ion-button [ngClass]="{'selectedTimeUnit':timeUnit=='day', 'currentRange':isCurrentTimeRange}" (tap)="setTimeUnit('day')" block clear>Day</button>
+      </ion-col>
+      <ion-col width-20>
+        <button ion-button [ngClass]="{'selectedTimeUnit':timeUnit=='week', 'currentRange':isCurrentTimeRange}" (tap)="setTimeUnit('week')" block clear>Week</button>
+      </ion-col>
+      <ion-col width-20>
+        <button ion-button [ngClass]="{'selectedTimeUnit':timeUnit=='month', 'currentRange':isCurrentTimeRange}" (tap)="setTimeUnit('month')" block clear>Month</button>
+      </ion-col>
+      <ion-col width-20>
+        <button ion-button [disabled]="isCurrentTimeRange" block clear icon-only (tap)="next()"><ion-icon name="arrow-dropright"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="wrapper" *ngIf="mode=='log'&&observations?.length==0">
+    Nothing to show
+  </div>
+
+  <ion-list [hidden]="mode=='chart'" no-lines [virtualScroll]="observations"
+            [headerFn]="setDayHeader" approxItemHeight="52px" approxItemHeight="52px"
+            [virtualTrackBy]="trackBy" id="historyItems">
+
+    <ion-item-divider style="height:52px" [class.weekend]="header.startsWith('Sat')||header.startsWith('Sun')" *virtualHeader="let header">
+      {{ header }}
+    </ion-item-divider>
+
+    <ion-item style="height:52px" *virtualItem="let observation"
+              class="historyItem"
+              [class.weekend]="observation.we"
+              (click)="observationDetail(observation)">
+      <div class="row-wrapper">
+        <div>
+          <span item-left [class]="'emo emo-' + observation.topic?.icon" [style.color]="observation.topic?.color"></span>
+          &nbsp;&nbsp;{{observation.topic?.name}}
+        </div>
+        <div class="observationValue">
+          <ion-badge [style.background-color]="observation.topic?.color">{{observation.value}}</ion-badge>
+        </div>
+        <div class="observationTime">
+          <span>{{observationTime(observation)}}</span>
+        </div>
+      </div>
+    </ion-item>
+
+  </ion-list>
+
+  <div [hidden]="mode!='chart'" class="chart-wrapper">
+
+    <div class="wrapper" *ngIf="observations?.length==0">
+      Nothing to chart
+    </div>
+
+    <chart [options]="chartOptions" class="chart"></chart>
+  </div>
+
+  <ion-fab left bottom>
+    <button ion-fab color="primary" (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab [hidden]="mode=='chart'" right bottom>
+    <button ion-fab color="primary" (click)="chart()">
+      <ion-icon name="pulse"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab [hidden]="mode=='log'" right bottom>
+    <button ion-fab color="primary" (click)="log()">
+      <ion-icon name="paper"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

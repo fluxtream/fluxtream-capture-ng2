@@ -1,0 +1,592 @@
+// http://ionicframework.com/docs/v2/theming/
+
+// App Shared Imports
+// --------------------------------------------------
+// These are the imports which make up the design of this app.
+// By default each design mode includes these shared imports.
+// App Shared Sass variables belong in app.variables.scss.
+
+// Include Bourbon
+$output-bourbon-deprecation-warnings: false;
+@import "../theme/bourbon/bourbon";
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@import "../theme/common";
+
+.content, .content-ios, .content-md,
+ion-item, ion-item-sliding, ion-grid,
+ion-item-options {
+  background-color: $background-warm;
+}
+
+.item, .item-ios, .item-md,
+.grid, .input, .item-inner, .item-wrapper {
+  background: $background-warm;
+}
+
+.menu-list .item-inner, input {
+  background: transparent;
+}
+
+#topicsFilter {
+  .item-inner {
+    background: transparent;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+}
+
+#welcome-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url('../assets/img/home_bg.jpg');
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+#welcome-logo {
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 192px;
+  top: 10%;
+}
+
+.menu-inner .item {
+  color: white;
+  background-color: #404040;
+}
+
+.dark {
+  background-color: #404040
+}
+
+.emo {
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+#dismissButton, #deleteButton {
+  margin-top: 0.8em;
+}
+
+ion-title {
+  text-align: center;
+  position: absolute;
+  top: 1em;
+  width: 100%;
+}
+
+.back-button {
+  z-index: 10;
+}
+
+.someSelected.checkbox-ios .checkbox-icon {
+  background-color: #8e9093;
+}
+
+@import "variables";
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('#{$icomoon-font-path}/icomoon.eot?5vnfll');
+  src:  url('#{$icomoon-font-path}/icomoon.eot?5vnfll#iefix') format('embedded-opentype'),
+  url('#{$icomoon-font-path}/icomoon.ttf?5vnfll') format('truetype'),
+  url('#{$icomoon-font-path}/icomoon.woff?5vnfll') format('woff'),
+  url('#{$icomoon-font-path}/icomoon.svg?5vnfll#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="emo-"], [class*=" emo-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.emo-music {
+  &:before {
+    content: $emo-music;
+  }
+}
+.emo-road {
+  &:before {
+    content: $emo-road;
+  }
+}
+.emo-thumbs-up {
+  &:before {
+    content: $emo-thumbs-up;
+  }
+}
+.emo-thumbs-down {
+  &:before {
+    content: $emo-thumbs-down;
+  }
+}
+.emo-heartbeat {
+  &:before {
+    content: $emo-heartbeat;
+  }
+}
+.emo-battery {
+  &:before {
+    content: $emo-battery;
+  }
+}
+.emo-thermometer {
+  &:before {
+    content: $emo-thermometer;
+  }
+}
+.emo-pencil2 {
+  &:before {
+    content: $emo-pencil2;
+  }
+}
+.emo-quill {
+  &:before {
+    content: $emo-quill;
+  }
+}
+.emo-pen {
+  &:before {
+    content: $emo-pen;
+  }
+}
+.emo-camera {
+  &:before {
+    content: $emo-camera;
+  }
+}
+.emo-dice {
+  &:before {
+    content: $emo-dice;
+  }
+}
+.emo-pacman {
+  &:before {
+    content: $emo-pacman;
+  }
+}
+.emo-spades {
+  &:before {
+    content: $emo-spades;
+  }
+}
+.emo-clubs {
+  &:before {
+    content: $emo-clubs;
+  }
+}
+.emo-diamonds {
+  &:before {
+    content: $emo-diamonds;
+  }
+}
+.emo-bullhorn {
+  &:before {
+    content: $emo-bullhorn;
+  }
+}
+.emo-books {
+  &:before {
+    content: $emo-books;
+  }
+}
+.emo-library {
+  &:before {
+    content: $emo-library;
+  }
+}
+.emo-cart {
+  &:before {
+    content: $emo-cart;
+  }
+}
+.emo-coin-dollar {
+  &:before {
+    content: $emo-coin-dollar;
+  }
+}
+.emo-credit-card {
+  &:before {
+    content: $emo-credit-card;
+  }
+}
+.emo-lifebuoy {
+  &:before {
+    content: $emo-lifebuoy;
+  }
+}
+.emo-phone {
+  &:before {
+    content: $emo-phone;
+  }
+}
+.emo-pushpin {
+  &:before {
+    content: $emo-pushpin;
+  }
+}
+.emo-stopwatch {
+  &:before {
+    content: $emo-stopwatch;
+  }
+}
+.emo-display {
+  &:before {
+    content: $emo-display;
+  }
+}
+.emo-mobile {
+  &:before {
+    content: $emo-mobile;
+  }
+}
+.emo-tv {
+  &:before {
+    content: $emo-tv;
+  }
+}
+.emo-bubbles {
+  &:before {
+    content: $emo-bubbles;
+  }
+}
+.emo-quotes-left {
+  &:before {
+    content: $emo-quotes-left;
+  }
+}
+.emo-hour-glass {
+  &:before {
+    content: $emo-hour-glass;
+  }
+}
+.emo-binoculars {
+  &:before {
+    content: $emo-binoculars;
+  }
+}
+.emo-key {
+  &:before {
+    content: $emo-key;
+  }
+}
+.emo-wrench {
+  &:before {
+    content: $emo-wrench;
+  }
+}
+.emo-hammer {
+  &:before {
+    content: $emo-hammer;
+  }
+}
+.emo-magic-wand {
+  &:before {
+    content: $emo-magic-wand;
+  }
+}
+.emo-bug {
+  &:before {
+    content: $emo-bug;
+  }
+}
+.emo-pie-chart {
+  &:before {
+    content: $emo-pie-chart;
+  }
+}
+.emo-stats-dots {
+  &:before {
+    content: $emo-stats-dots;
+  }
+}
+.emo-stats-bars {
+  &:before {
+    content: $emo-stats-bars;
+  }
+}
+.emo-stats-bars2 {
+  &:before {
+    content: $emo-stats-bars2;
+  }
+}
+.emo-gift {
+  &:before {
+    content: $emo-gift;
+  }
+}
+.emo-glass {
+  &:before {
+    content: $emo-glass;
+  }
+}
+.emo-alcool {
+  &:before {
+    content: $emo-alcool;
+  }
+}
+.emo-mug {
+  &:before {
+    content: $emo-mug;
+  }
+}
+.emo-spoon-knife {
+  &:before {
+    content: $emo-spoon-knife;
+  }
+}
+.emo-leaf {
+  &:before {
+    content: $emo-leaf;
+  }
+}
+.emo-bin {
+  &:before {
+    content: $emo-bin;
+  }
+}
+.emo-airplane {
+  &:before {
+    content: $emo-airplane;
+  }
+}
+.emo-accessibility {
+  &:before {
+    content: $emo-accessibility;
+  }
+}
+.emo-switch {
+  &:before {
+    content: $emo-switch;
+  }
+}
+.emo-cloud {
+  &:before {
+    content: $emo-cloud;
+  }
+}
+.emo-eye {
+  &:before {
+    content: $emo-eye;
+  }
+}
+.emo-eye-blocked {
+  &:before {
+    content: $emo-eye-blocked;
+  }
+}
+.emo-star-empty {
+  &:before {
+    content: $emo-star-empty;
+  }
+}
+.emo-star-full {
+  &:before {
+    content: $emo-star-full;
+  }
+}
+.emo-heart {
+  &:before {
+    content: $emo-heart;
+  }
+}
+.emo-heart-broken {
+  &:before {
+    content: $emo-heart-broken;
+  }
+}
+.emo-man {
+  &:before {
+    content: $emo-man;
+  }
+}
+.emo-woman {
+  &:before {
+    content: $emo-woman;
+  }
+}
+.emo-man-woman {
+  &:before {
+    content: $emo-man-woman;
+  }
+}
+.emo-happy {
+  &:before {
+    content: $emo-happy;
+  }
+}
+.emo-smile {
+  &:before {
+    content: $emo-smile;
+  }
+}
+.emo-tongue {
+  &:before {
+    content: $emo-tongue;
+  }
+}
+.emo-sad {
+  &:before {
+    content: $emo-sad;
+  }
+}
+.emo-wink {
+  &:before {
+    content: $emo-wink;
+  }
+}
+.emo-grin {
+  &:before {
+    content: $emo-grin;
+  }
+}
+.emo-cool {
+  &:before {
+    content: $emo-cool;
+  }
+}
+.emo-angry {
+  &:before {
+    content: $emo-angry;
+  }
+}
+.emo-evil {
+  &:before {
+    content: $emo-evil;
+  }
+}
+.emo-shocked {
+  &:before {
+    content: $emo-shocked;
+  }
+}
+.emo-baffled {
+  &:before {
+    content: $emo-baffled;
+  }
+}
+.emo-confused {
+  &:before {
+    content: $emo-confused;
+  }
+}
+.emo-neutral {
+  &:before {
+    content: $emo-neutral;
+  }
+}
+.emo-hipster {
+  &:before {
+    content: $emo-hipster;
+  }
+}
+.emo-wondering {
+  &:before {
+    content: $emo-wondering;
+  }
+}
+.emo-sleepy {
+  &:before {
+    content: $emo-sleepy;
+  }
+}
+.emo-frustrated {
+  &:before {
+    content: $emo-frustrated;
+  }
+}
+.emo-crying {
+  &:before {
+    content: $emo-crying;
+  }
+}
+.emo-point-up {
+  &:before {
+    content: $emo-point-up;
+  }
+}
+.emo-point-right {
+  &:before {
+    content: $emo-point-right;
+  }
+}
+.emo-point-down {
+  &:before {
+    content: $emo-point-down;
+  }
+}
+.emo-point-left {
+  &:before {
+    content: $emo-point-left;
+  }
+}
+.emo-warning {
+  &:before {
+    content: $emo-warning;
+  }
+}
+.emo-cross {
+  &:before {
+    content: $emo-cross;
+  }
+}
+.emo-checkmark {
+  &:before {
+    content: $emo-checkmark;
+  }
+}
+.emo-radio-checked {
+  &:before {
+    content: $emo-radio-checked;
+  }
+}
+
+.title {
+  left: 0;
+  right: 0;
+}
