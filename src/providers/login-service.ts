@@ -105,6 +105,9 @@ export class LoginService {
   }
 
   signOut() {
+    this.logger.log("signing out...");
+    this.userPrefs.deleteLoginInfo();
+    this.userPrefs.deleteValuesForUser();
     return Promise.resolve({});
   }
 

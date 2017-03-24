@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import "rxjs/add/operator/map";
+import {Logger} from "../utils";
 
 /*
   Generated class for the Forge provider.
@@ -11,10 +12,13 @@ import "rxjs/add/operator/map";
 @Injectable()
 export class NativeService {
 
+  private logger: any;
+
   public static readonly PERMISSION_WAS_NOT_GRANTED: string = "permission_was_not_granted";
   private storage = window.localStorage;
 
   constructor() {
+    this.logger = Logger(true, NativeService.name);
     console.log('Hello Mock Native Service Provider');
   }
 
@@ -74,5 +78,23 @@ export class NativeService {
   initializeUserPrefs() {
   }
 
+  deleteLoginInfo() {
+    let keysToDelete = [];
+    for (let i=0; i<this.storage.length; i++)
+      if (this.storage.key(i).startsWith("flx.login"))
+        keysToDelete.push(this.storage.key(i));
+    this.logger.log("default native service, deleteLoginInfo", keysToDelete);
+    for (let key of keysToDelete)
+      this.storage.removeItem(key);
+  }
 
+  deleteValuesForUser(uid) {
+    let keysToDelete = [];
+    for (let i=0; i<this.storage.length; i++)
+      if (this.storage.key(i).startsWith("flx.user."+uid))
+        keysToDelete.push(this.storage.key(i));
+    this.logger.log("default native service, deleteValuesForUser", keysToDelete);
+    for (let key of keysToDelete)
+      this.storage.removeItem(key);
+  }
 }

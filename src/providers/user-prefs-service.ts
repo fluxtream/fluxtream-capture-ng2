@@ -1,7 +1,7 @@
 import {Injectable, EventEmitter} from "@angular/core";
 import "rxjs/add/operator/map";
 import {Platform} from "ionic-angular";
-import {Utils} from "../utils";
+import {Utils, Logger} from "../utils";
 import {NativeService} from "./native-service";
 import {DateBrowserService} from "./date-browser-service";
 
@@ -31,6 +31,7 @@ export class AppDefaults {
 @Injectable()
 export class UserPrefsService {
 
+  private logger: any;
   public prefChanges:EventEmitter<string>;
 
   private uid:string = "1";
@@ -41,6 +42,7 @@ export class UserPrefsService {
   constructor(private native: NativeService,
               private platform: Platform) {
     console.log('Hello UserPrefs Provider');
+    this.logger = Logger(true, UserPrefsService.name);
     this.prefChanges = new EventEmitter<string>();
     if (Utils.isDevice(platform)) {
       console.log("initializing user prefs...");
@@ -85,4 +87,12 @@ export class UserPrefsService {
     this.native.setPreference(prefKey, value);
   }
 
+  deleteLoginInfo() {
+    this.native.deleteLoginInfo();
+  }
+
+  deleteValuesForUser() {
+    this.logger.log("userPrefs, deleteValuesForUser", this.uid);
+    this.native.deleteValuesForUser(this.uid);
+  }
 }

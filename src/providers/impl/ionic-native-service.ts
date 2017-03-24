@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import "rxjs/add/operator/map";
 import {Geolocation} from "ionic-native";
+import {Logger} from "../../utils";
 
 /*
  Ionic native implementation of the Native Services
@@ -10,9 +11,11 @@ declare var cordova: any;
 @Injectable()
 export class IonicNativeService {
 
+  private logger: any;
   private storage = window.localStorage;
 
   constructor() {
+    this.logger = Logger(true, IonicNativeService.name);
     console.log('Hello Ionic Native Provider');
   }
 
@@ -42,6 +45,26 @@ export class IonicNativeService {
       prefs[key] = this.storage.getItem(key);
     }
     return prefs;
+  }
+
+  deleteLoginInfo() {
+    let keysToDelete = [];
+    for (let i=0; i<this.storage.length; i++)
+      if (this.storage.key(i).startsWith("flx.login"))
+        keysToDelete.push(this.storage.key(i));
+    this.logger.log("default native service, deleteLoginInfo", keysToDelete);
+    for (let key of keysToDelete)
+      this.storage.removeItem(key);
+  }
+
+  deleteValuesForUser(uid) {
+    let keysToDelete = [];
+    for (let i=0; i<this.storage.length; i++)
+      if (this.storage.key(i).startsWith("flx.user."+uid))
+        keysToDelete.push(this.storage.key(i));
+    this.logger.debug("(signing out) keysToDelete", keysToDelete);
+    for (let key of keysToDelete)
+      this.storage.removeItem(key);
   }
 
   /**
