@@ -27,12 +27,12 @@ export class SignUpPage {
     this.main_page = { component: TopicsPage };
 
     this.signup = new FormGroup({
-      email: new FormControl('hi@candide.me', [Validators.required]),
-      username: new FormControl('hi', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]),
-      firstname: new FormControl('Candide', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]),
-      lastname: new FormControl('Kemmler', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]),
-      password: new FormControl('testtest', [Validators.required, Validators.minLength(8), Validators.maxLength(24)]),
-      confirm_password: new FormControl('testtest', Validators.required)
+      email: new FormControl('', [Validators.required]),
+      username: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]),
+      firstname: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]),
+      lastname: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]),
+      password: new FormControl('xxxxxxxx', [Validators.required, Validators.minLength(8), Validators.maxLength(24)]),
+      confirm_password: new FormControl('xxxxxxxx', Validators.required)
     });
   }
 

@@ -62,15 +62,6 @@ export class SignInPage {
       }
     );
     console.log(this.login.value);
-    // this.loginService.handleAuthSuccessResponse({
-    //   "fullname": "Aurélien Kemmler",
-    //   "username": "candide",
-    //   "firstname": "Candide",
-    //   "lastname": "Kemmler",
-    //   "id": 1,
-    //   "photoURL": null,
-    //   "access_token": "844062ce-de9e-44af-9360-d5fd95a5fcdd"
-    // });
   }
 
   goToSignup() {
