@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import {NavController, ModalController, AlertController} from 'ionic-angular';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 import { TermsOfServicePage } from '../terms-of-service/terms-of-service';
@@ -7,6 +7,7 @@ import {TopicsPage} from "../topics/topics";
 import {LoginService} from "../../providers/login-service";
 import {Response} from "@angular/http";
 import {Logger} from "../../utils";
+import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'signup-page',
@@ -19,8 +20,11 @@ export class SignUpPage {
   signup: FormGroup;
   main_page: { component: any };
 
+  static instance: SignUpPage;
+
   constructor(public nav: NavController,
               public modal: ModalController,
+              public alertCtrl: AlertController,
               public loginService: LoginService) {
     this.logger = Logger(true, SignUpPage.name);
 
@@ -34,6 +38,8 @@ export class SignUpPage {
       password: new FormControl('xxxxxxxx', [Validators.required, Validators.minLength(8), Validators.maxLength(24)]),
       confirm_password: new FormControl('xxxxxxxx', Validators.required)
     });
+
+    SignUpPage.instance = this;
   }
 
   doSignup(){
@@ -50,9 +56,19 @@ export class SignUpPage {
     );
   }
 
+  static showError() {
+    let alert = SignUpPage.instance.alertCtrl.create({
+      title: 'Server Error',
+      subTitle: 'Please verify email, username and passwords',
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+
   public handleError(error: Response) {
     console.log("logging error " + error.status + ", " + error.statusText, error);
     console.error("handling error", error);
+    SignUpPage.showError();
   }
 
   showTermsModal() {
