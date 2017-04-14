@@ -35,6 +35,7 @@ UserInterfaceState.xcuserstate
 /src/build/
 src/**/*.map
 src/**/*.js
+!src/assets/js/jquery-2.2.3.min.js
 /src/env/environment.ts
 !.gitignore
 !service-worker.js
