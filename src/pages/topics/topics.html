@@ -25,7 +25,7 @@
 
   <div *ngIf="topics?.length<2" class="wrapper">
     <div *ngIf="topics?.length==1">Tap topic to make a new observation</div>
-    <div *ngIf="topics?.length>0">Create a topic and start making observations</div>
+    <div *ngIf="topics?.length==0">Create a topic and start making observations</div>
   </div>
 
   <ion-list [reorder]="reordering" (ionItemReorder)="reOrder($event)">
