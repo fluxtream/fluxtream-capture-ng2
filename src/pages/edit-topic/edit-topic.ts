@@ -27,6 +27,7 @@ export class EditTopicPage {
   rangeStart: number;
   rangeEnd: number;
   rangeDefault: number;
+  rangeStep: number = 1;
   errors: Array<string> = [];
   isValid: boolean = false;
   icon: string = "pencil2";
@@ -109,6 +110,7 @@ export class EditTopicPage {
     let topic;
     if (this.topicType==="range") {
       topic = new RangeTopic(this.topicName, this.rangeStart, this.rangeEnd, this.rangeDefault);
+      topic.step = this.rangeStep;
       console.log("saving range topic");
     } else if (this.topicType==="none") {
       topic = new BaseTopic(this.topicName);

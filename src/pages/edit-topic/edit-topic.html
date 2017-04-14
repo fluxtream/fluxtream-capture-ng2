@@ -67,6 +67,10 @@
       <ion-label>Default</ion-label>
       <ion-input (blur)="validate(true)" [(ngModel)]="rangeDefault" (ngModelChange)="toNumber()" type="number"></ion-input>
     </ion-item>
+    <ion-item *ngIf="topicType==='range'">
+      <ion-label>Step</ion-label>
+      <ion-input (blur)="validate(true)" [(ngModel)]="rangeStep" (ngModelChange)="toNumber()" type="number"></ion-input>
+    </ion-item>
 
   </ion-list>
 

@@ -31,7 +31,7 @@
     </ion-row>
     <ion-row *ngIf="topic?.type==='range'">
       <ion-range style="width: 85%; margin: 0 auto;" [min]="topic.rangeStart" [max]="topic.rangeEnd"
-                 step="1" snaps="true"
+                 step="topic.step" snaps="true"
                  [(ngModel)]="value" color="secondary">
         <ion-label range-left>{{topic.rangeStart}}</ion-label>
         <ion-label range-right>{{topic.rangeEnd}}</ion-label>
