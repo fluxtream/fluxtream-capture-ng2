@@ -58,7 +58,7 @@
             [headerFn]="setDayHeader" approxItemHeight="52px" approxItemHeight="52px"
             [virtualTrackBy]="trackBy" id="historyItems">
 
-    <ion-item-divider style="height:52px" [class.weekend]="header.startsWith('Sat')||header.startsWith('Sun')" *virtualHeader="let header">
+    <ion-item-divider [hidden]="timeUnit=='day'" style="height:52px" [class.weekend]="header.startsWith('Sat')||header.startsWith('Sun')" *virtualHeader="let header">
       {{ header }}
     </ion-item-divider>
 
@@ -71,7 +71,7 @@
           <span item-left [class]="'emo emo-' + observation.topic?.icon" [style.color]="observation.topic?.color"></span>
           &nbsp;&nbsp;{{observation.topic?.name}}
         </div>
-        <div class="observationValue">
+        <div class="observationValue" *ngIf="observation.topic?.type!='none'">
           <ion-badge [style.background-color]="observation.topic?.color">{{observation.value}}</ion-badge>
         </div>
         <div class="observationTime">

@@ -266,6 +266,9 @@ export class HistoryPage {
   observationTime(observation) {
     let observationZone = moment.tz.zone(observation.timezone);
     let localZone = this.currentTimeZone;
+    if (!observation.moment)
+      observation.moment = moment.tz(observation.observationDate + " " + observation.observationTime, observation.timezone);
+    this.selfReportService.weekend(observation);
     let timestamp = observation.moment.unix();
     let ot = observation.moment.format("h:mm A");
     if (localZone.offset(timestamp)!=observationZone.offset(timestamp))
@@ -278,8 +281,6 @@ export class HistoryPage {
   }
 
   setDayHeader(record, recordIndex, records) {
-    if (record.timeUnit===DateBrowserService.TIMEUNIT_DAY)
-      return null;
     if (recordIndex===0)
       return moment(record.observationDate).format("dddd Do MMM");
     else {
