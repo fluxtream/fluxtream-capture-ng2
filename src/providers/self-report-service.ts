@@ -518,7 +518,6 @@ export class SelfReportService {
     let endIndex = startIndex;
     for (; endIndex < this.observations.length; endIndex++)
       if (this.observations[endIndex].observationDate>endRangeDate) {
-        endIndex--;
         break;
       }
     return this.observations.slice(startIndex, endIndex);
@@ -549,7 +548,7 @@ export class SelfReportService {
     });
   }
 
-  weekend(observation) {
+  public weekend(observation) {
     if (observation.we)
       return;
     if (!observation.moment)
