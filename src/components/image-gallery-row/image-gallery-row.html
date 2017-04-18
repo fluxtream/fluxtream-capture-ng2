@@ -1,0 +1,14 @@
+<!--
+  Generated template for the ImageGalleryRow component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+
+<table class="rowtable">
+  <tr class="photorow">
+    <td class="photocell" *ngFor="let item of photoItems">
+      <image-gallery-cell (trash)="trashItem($event)" (upload)="uploadItem($event)" [photoItem]="item"></image-gallery-cell>
+    </td>
+  </tr>
+</table>

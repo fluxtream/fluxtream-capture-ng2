@@ -1,0 +1,25 @@
+image-gallery-cell {
+
+  ion-img {
+    display:block;
+    height: 100px;
+    background: white;
+  }
+
+  ion-img img {
+    margin: 10px auto;
+    object-fit: cover;
+    width: 96px;
+    height: 90px;
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+
+  .list-md {
+    width: 96px;
+    margin: -1px auto 16px auto !important;
+  }
+
+}

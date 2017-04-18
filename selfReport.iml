@@ -4,9 +4,12 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/platforms" />
+<<<<<<< Updated upstream
       <excludeFolder url="file://$MODULE_DIR$/plugins" />
       <excludeFolder url="file://$MODULE_DIR$/res" />
       <excludeFolder url="file://$MODULE_DIR$/resources" />
+=======
+>>>>>>> Stashed changes
       <excludeFolder url="file://$MODULE_DIR$/www" />
     </content>
     <orderEntry type="inheritedJdk" />

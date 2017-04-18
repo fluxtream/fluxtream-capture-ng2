@@ -35,6 +35,13 @@ import {ShowHideContainer} from "../components/show-hide-password/show-hide-cont
 import {ShowHideInput} from "../components/show-hide-password/show-hide-input";
 import {ForgotPasswordPage} from "../pages/forgot-password/forgot-password";
 import {TermsOfServicePage} from "../pages/terms-of-service/terms-of-service";
+import {HeartRateService} from "../providers/heart-rate-service";
+import {PhotoListService} from "../providers/photo-list-service";
+import {PhotoSynchronizationService} from "../providers/photo-synchronization-service";
+import {PhotoUploadPage} from "../pages/photo-upload/photo-upload";
+import {HeartRatePage} from "../pages/heart-rate/heart-rate";
+import {ImageGalleryRowComponent} from "../components/image-gallery-row/image-gallery-row";
+import {ImageGalleryCellComponent} from "../components/image-gallery-cell/image-gallery-cell";
 
 @NgModule({
   declarations: [
@@ -56,7 +63,11 @@ import {TermsOfServicePage} from "../pages/terms-of-service/terms-of-service";
     HistoryPage,
     TimezoneWidgetPage,
     ForgotPasswordPage,
-    TermsOfServicePage
+    TermsOfServicePage,
+    ImageGalleryRowComponent,
+    ImageGalleryCellComponent,
+    HeartRatePage,
+    PhotoUploadPage
   ],
   imports: [
     ChartModule.forRoot(require('highcharts')),
@@ -71,7 +82,9 @@ import {TermsOfServicePage} from "../pages/terms-of-service/terms-of-service";
         { component: SettingsPage, name: 'Settings', segment: 'settings' },
         { component: EditObservationPage, name: 'New Observation', segment: 'observation/:topicId' },
         { component: EditTopicPage, name: 'New Topic', segment: 'new-topic' },
-        { component: TopicsPage, name: 'Home', segment: 'home' }
+        { component: TopicsPage, name: 'Home', segment: 'home' },
+        { component: PhotoUploadPage, name: 'Photo Upload', segment: 'photos' },
+        { component: HeartRatePage, name: 'Heart Rate', segment: 'heart' }
       ]
     }),
     AgmCoreModule.forRoot({
@@ -97,9 +110,12 @@ import {TermsOfServicePage} from "../pages/terms-of-service/terms-of-service";
     DebugPage,
     TimezoneWidgetPage,
     ForgotPasswordPage,
-    TermsOfServicePage
+    TermsOfServicePage,
+    PhotoUploadPage,
+    HeartRatePage
   ],
   providers: [
+    HeartRateService,
     DeviceIdService,
     LoginService,
     UserPrefsService,
@@ -111,6 +127,8 @@ import {TermsOfServicePage} from "../pages/terms-of-service/terms-of-service";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SelfReportService,
     DateBrowserService,
+    PhotoListService,
+    PhotoSynchronizationService,
     TestDataService
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

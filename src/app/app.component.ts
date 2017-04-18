@@ -8,6 +8,8 @@ import {SelfReportService} from "../providers/self-report-service";
 import {Logger} from "../utils";
 import {LoginService, LoginEvents} from "../providers/login-service";
 import {TopicsPage} from "../pages/topics/topics";
+import {PhotoUploadPage} from "../pages/photo-upload/photo-upload";
+import {HeartRatePage} from "../pages/heart-rate/heart-rate";
 
 @Component({
   templateUrl: 'app.html'
@@ -120,6 +122,14 @@ export class FluxtreamCaptureApp {
       //   this.nav.push(SettingsPage);
       //   this.menu.close();
       //   break;
+      case 'photo-upload':
+        this.nav.push(PhotoUploadPage);
+        this.menu.close();
+        break;
+      case 'heart-rate':
+        this.nav.push(HeartRatePage);
+        this.menu.close();
+        break;
       case 'debug':
         this.nav.push(DebugPage);
         this.menu.close();

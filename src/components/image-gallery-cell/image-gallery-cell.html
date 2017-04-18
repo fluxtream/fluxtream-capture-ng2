@@ -1,0 +1,18 @@
+<!--
+  Generated template for the ImageGalleryCell component.
+
+  See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
+  for more info on Angular 2 Components.
+-->
+
+<div class="wrapper" *ngIf="photoItem">
+  <ion-img [src]="photoItem.thumb_uri"></ion-img>
+  <ion-list>
+    <ion-item>
+      <button item-left ion-button outline color="danger" (click)="trashItem()"><ion-icon name="trash"></ion-icon></button>
+      <button item-right ion-button outline (click)="uploadItem()"><ion-icon name="cloud-upload"></ion-icon></button>
+    </ion-item>
+  </ion-list>
+  <!--<div class="buttons">-->
+  <!--</div>-->
+</div>

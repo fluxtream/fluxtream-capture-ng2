@@ -25,6 +25,13 @@ export class IonicNativeService {
     return Geolocation.getCurrentPosition();
   }
 
+  // PERMISSIONS
+
+  requestStorageReadPermission():Promise<boolean> {
+    // TODO: implement for ionic
+    return Promise.resolve(false);
+  }
+
   // PREFERENCES
 
   getPreference(key: string): string {

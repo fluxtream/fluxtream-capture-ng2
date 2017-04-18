@@ -56,6 +56,14 @@
         Debug
         <ion-icon name="bug" item-left></ion-icon>
       </button>
+      <button id="heart-rate-button" ion-item (click)="openPage('heart-rate')">
+        Heart Rate
+        <ion-icon name="heart" item-left></ion-icon>
+      </button>
+      <button id="photo-upload-button" ion-item (click)="openPage('photo-upload')">
+        Photo Upload
+        <ion-icon name="camera" item-left></ion-icon>
+      </button>
       <button detail-none id="logout-button" ion-item (click)="signOut();mainMenu.close()">
         Sign Out
         <ion-icon name="log-out" item-left></ion-icon>

@@ -1,6 +1,11 @@
-import {Injectable} from "@angular/core";
+import {EventEmitter, Injectable} from "@angular/core";
 import "rxjs/add/operator/map";
 import {Logger} from "../utils";
+import {PhotoItem} from "../models/PhotoItem";
+import {UserPrefsService} from "./user-prefs-service";
+import {NativeEvent} from "../models/NativeEvent";
+import {HeartRateModuleEvents} from "./heart-rate-service";
+import {PhotoUploadModuleEvents} from "./photo-list-service";
 
 /*
   Generated class for the Forge provider.
@@ -71,6 +76,12 @@ export class NativeService {
     return prefs;
   }
 
+  // PERMISSIONS
+
+  requestStorageReadPermission():Promise<boolean> {
+    return Promise.resolve(true);
+  }
+
   /**
    * Cache preferences to allow synchronous access
    * @param self
@@ -96,5 +107,64 @@ export class NativeService {
     this.logger.log("default native service, deleteValuesForUser", keysToDelete);
     for (let key of keysToDelete)
       this.storage.removeItem(key);
+  }
+
+  // PHOTO UPLOAD
+
+  getPhotoList():Promise<any> {
+    let imgs = ["Banksy_lovers", "Brussels2", "bruxelles", "pigs", "img_8922",
+      "SOMEY-LE-MUR-2016", "mannekenpeace", "street_art_brussels_full"];
+    let photos = [];
+    imgs.forEach(imageName => photos.push(<PhotoItem>{
+      date_taken: "",
+      id: 1,
+      orientation: "portrait",
+      orientation_tag: 0,
+      thumb_id: 1,
+      thumb_uri: "assets/test/photos/" + imageName + "_tn.jpg",
+      uri: "assets/test/photos/" + imageName + ".jpg"
+    }));
+
+    return Promise.resolve(photos);
+  }
+
+  uploadPhoto(photoId, success, error) {
+  }
+
+  setUploadParameters(userPrefs: UserPrefsService, uid:string) {
+  }
+
+  startAutoupload(userPrefs: UserPrefsService, uid:string) {
+  }
+
+  // HEART RATE MONITOR
+
+
+  isBLESupported(success:(value)=>any, error:(e)=>any) {
+    success(true);
+  }
+
+  enableHeartRateService(accessToken: string, success, error) {
+    success();
+  }
+
+  disableHeartRateService() {
+  }
+
+  stopHeartRateService(success, error) {
+  }
+
+  lockCurrentHeartRateDevice(success, error) {
+    success();
+  }
+
+  unlockCurrentHeartRateDevice(success, error) {
+    success();
+  }
+
+  listenToHeartRateModuleEvents(deviceEvents:EventEmitter<NativeEvent<HeartRateModuleEvents>>) {
+  }
+
+  listenToPhotoUploadModuleEvents(photoEvents:EventEmitter<NativeEvent<PhotoUploadModuleEvents>>) {
   }
 }

@@ -46,6 +46,19 @@ export class TriggerIONativeService {
     return this.preferences[key];
   }
 
+  // PERMISSIONS
+
+  private requestPermission(forgePermission):Promise<boolean> {
+    return new Promise((resolve, reject)=>{
+      forge.permissions.request(forgePermission,
+        "", (granted)=>resolve(granted), (error)=>reject(error));
+    });
+  }
+
+  requestStorageReadPermission():Promise<boolean> {
+    return this.requestPermission(forge.permissions.storage.read);
+  }
+
   /**
    * Cache preferences to allow synchronous access
    * @param self

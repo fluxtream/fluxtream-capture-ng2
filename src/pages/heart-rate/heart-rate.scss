@@ -1,0 +1,40 @@
+page-heart-rate {
+
+  .footer  .toolbar-title {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .wrapper {
+    position: relative;
+    height: 100%;
+  }
+
+  .deviceData {
+    margin-top: 30px;
+  }
+
+  .deviceLock {
+    margin-top: 80px;
+  }
+
+  #enableMonitoringButton {
+    margin-top: 20px;
+  }
+
+  #disabledMonitoringButton {
+    position: absolute;
+    bottom: 3px;
+  }
+
+  .lockButton {
+    vertical-align: middle;
+    font-size: 20px;
+  }
+
+  ion-title > p {
+
+  }
+
+}
